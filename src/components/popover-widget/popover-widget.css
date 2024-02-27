@@ -1,0 +1,31 @@
+.popover {
+    position: absolute;
+    border: 1px solid #ebebeb;
+    width: 280px;
+    font-family: "Gill Sans", sans-serif;
+}
+
+.popover::after {
+  content: "";
+  position: absolute;
+  border-top: 15px solid #ebebeb;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  top: 100%;
+  left: 45%;
+}
+
+.popover-title {
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ebebeb;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.popover-content {
+    padding: 0.5rem 0.75rem;
+    color: #212529;
+}

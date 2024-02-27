@@ -1,13 +1,8 @@
-const { perfomance } = require('perf_hooks');
+import './popover-widget.css';
 
-export default class Popover {
-  constructor(container) {
-    if (!(container instanceof HTMLElement)) {
-      throw new Error('Container is not HTMLElement');
-    }
+export default class PopoverWidget {
 
-    this.container = container;
-
+  constructor() {
     this._popovers = [];
   }
 
@@ -22,24 +17,30 @@ export default class Popover {
     const popoverContentElement = document.createElement('div');
     popoverContentElement.classList.add('popover-content');
     popoverContentElement.textContent = message;
+
+    popoverElement.appendChild(popoverTitleElement);
+    popoverElement.appendChild(popoverContentElement);
+
+    return popoverElement;
   }
 
   showPopover(title, message, element) {
+
     const popoverElement = this._createPopoverElement(title, message);
 
-    const id = perfomance.now();
+    const id = Date.now();
 
     this._popovers.push({
       id,
       element: popoverElement,
     });
 
-    this.container.appendChild(popoverElement);
+    document.body.appendChild(popoverElement);
 
-    const { left, top } = element.getBoundClientRect();
+    const { left, top } = element.getBoundingClientRect();
 
-    popoverElement.style.left = `${left + 10}px`;
-    popoverElement.style.bottom = `${top - 10}px`;
+    popoverElement.style.left = `${left + element.offsetWidth / 2 - popoverElement.offsetWidth / 2}px`;
+    popoverElement.style.top = `${top - popoverElement.offsetHeight - 20}px`;
 
     return id;
   }
