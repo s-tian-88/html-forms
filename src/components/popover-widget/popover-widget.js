@@ -1,12 +1,11 @@
 import './popover-widget.css';
 
 export default class PopoverWidget {
-
   constructor() {
-    this._popovers = [];
+    this.popovers = [];
   }
 
-  _createPopoverElement(title, message) {
+  createPopoverElement(title, message) {
     const popoverElement = document.createElement('div');
     popoverElement.classList.add('popover');
 
@@ -25,12 +24,11 @@ export default class PopoverWidget {
   }
 
   showPopover(title, message, element) {
-
-    const popoverElement = this._createPopoverElement(title, message);
+    const popoverElement = this.createPopoverElement(title, message);
 
     const id = Date.now();
 
-    this._popovers.push({
+    this.popovers.push({
       id,
       element: popoverElement,
     });
@@ -46,10 +44,10 @@ export default class PopoverWidget {
   }
 
   removePopover(id) {
-    const popover = this._popovers.find((p) => p.id === id);
+    const popover = this.popovers.find((p) => p.id === id);
 
     popover.element.remove();
 
-    this._popovers = this._popovers.filter((p) => p.id !== id);
+    this.popovers = this.popovers.filter((p) => p.id !== id);
   }
 }

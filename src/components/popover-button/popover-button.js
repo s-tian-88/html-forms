@@ -5,7 +5,6 @@ import PopoverWidget from '../popover-widget/popover-widget';
 const popover = new PopoverWidget();
 
 export default class PopoverButton {
-
   constructor(container) {
     if (!(container instanceof HTMLElement)) {
       throw new Error('Container is not HTMLElement');
@@ -13,7 +12,9 @@ export default class PopoverButton {
 
     this.container = container;
     this.activePopover = null;
+  }
 
+  start() {
     this.showButton();
   }
 
@@ -25,7 +26,6 @@ export default class PopoverButton {
     popoverButtonElement.addEventListener('click', this.btnOnClick);
     popoverButtonElement.addEventListener('blur', this.btnOnBlur);
     this.container.appendChild(popoverButtonElement);
-
   }
 
   btnOnClick(e) {
