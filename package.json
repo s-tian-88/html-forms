@@ -3,12 +3,13 @@
   "packageManager": "yarn@4.1.0",
   "scripts": {
     "lint": "eslint --fix .",
-    "test": "jest",
+    "test": "jest --testTimeout=20000",
     "coverage": "jest --coverage",
     "build": "webpack --config webpack.dev.config",
     "build:prod": "webpack --config webpack.prod.config",
-    "e2e": "jest --testPathPattern=./e2e/ --runInBand",
-    "start": "webpack serve --config webpack.prod.config"
+    "e2e": "jest --testPathPattern=./e2e/ --runInBand --testTimeout=20000",
+    "start": "webpack serve --config webpack.prod.config",
+    "ci:test": "start-server-and-test 9000 test"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.9",
@@ -23,6 +24,8 @@
     "eslint-plugin-import": "^2.25.2",
     "html-webpack-plugin": "^5.6.0",
     "jest": "^29.7.0",
+    "puppeteer": "^22.3.0",
+    "start-server-and-test": "^2.0.3",
     "style-loader": "^3.3.4",
     "terser-webpack-plugin": "^5.3.10",
     "url-loader": "^4.1.1",

@@ -15,7 +15,7 @@ build_script:
   - yarn build
 
 test_script:
-  - yarn lint
+  - yarn lint && yarn ci:test
 
 deploy_script: 
   - git config --global credential.helper store
