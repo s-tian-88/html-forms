@@ -8,7 +8,7 @@ describe('start page and show button', () => {
   beforeEach (async () => {
 
     browser = await puppeteer.launch({
-      headless: false,
+      headless: 'new',
       slowmo: 100,
       devtools: true,
     });
